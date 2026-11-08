@@ -1,5 +1,20 @@
 # Changelog
 
+## 2.1 — compact layout fixes
+
+* **Fixed the bottom row being clipped.** The IME view now honours window insets:
+  gesture-navigation devices pad the bottom by the navigation-bar inset, so the
+  `↵` key is no longer cut off by the gesture handle. The measured height is also
+  clamped to the height the window actually offers (and to 45 % of the screen),
+  instead of always claiming the configured height and getting clipped.
+* **Actually compact.** Default height 232 → **196 dp**, range 340 → **300 dp**
+  (minimum 150), candidate strip 40 → **32 dp**, key gaps 2.6 → **2 dp**, key
+  corner radius 6.5 → 5.5 dp, letter glyphs 19 → 17.5 dp, function glyphs
+  13.5 → 12 dp. The keyboard now occupies ~22 % of a 891 dp screen instead of ~31 %.
+* Clipboard panel header trimmed to 36 dp to match.
+* Settings slider range updated to the new 150–300 dp bounds.
+* `versionCode 3`, `versionName 2.1`; screenshots re-rendered at the new default.
+
 ## 2.0 — full rebuild of the starter project
 
 The starter contained three files: a 28-entry hardcoded `mapOf` dictionary, a

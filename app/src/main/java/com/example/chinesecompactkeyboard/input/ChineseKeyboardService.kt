@@ -11,6 +11,7 @@ import android.os.Looper
 import android.view.KeyEvent
 import android.view.View
 import android.view.View.MeasureSpec
+import android.view.WindowInsets
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputConnection
 import android.widget.LinearLayout
@@ -125,7 +126,7 @@ class ChineseKeyboardService : InputMethodService(),
         }
         root!!.addView(
             candidateBar,
-            LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, dp(40f))
+            LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, dp(CANDIDATE_BAR_DP))
         )
 
         keyboardView = KeyboardView(this).apply {
@@ -149,6 +150,11 @@ class ChineseKeyboardService : InputMethodService(),
 
     private fun dp(value: Float): Int = (value * resources.displayMetrics.density).toInt()
 
+    private companion object {
+        /** Candidate strip height; kept tight so the keyboard stays compact. */
+        const val CANDIDATE_BAR_DP = 32f
+    }
+
     /**
      * The input view always measures itself at exactly the height chosen in
      * settings, whatever measure spec the window manager hands down. Without
@@ -156,8 +162,33 @@ class ChineseKeyboardService : InputMethodService(),
      * measure the IME with an unspecified spec.
      */
     private inner class ImeRoot(context: Context) : LinearLayout(context) {
+
+        init {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                setOnApplyWindowInsetsListener { view, insets ->
+                    // Gesture navigation draws over the IME window on many devices;
+                    // pad the bottom so the last key row is never clipped.
+                    val bars = insets.getInsets(
+                        WindowInsets.Type.navigationBars() or WindowInsets.Type.systemGestures()
+                    )
+                    if (view.paddingBottom != bars.bottom) {
+                        view.setPadding(0, 0, 0, bars.bottom)
+                        view.requestLayout()
+                    }
+                    insets
+                }
+            }
+        }
+
         override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-            val height = dp(prefs.keyboardHeightDp.toFloat())
+            val mode = MeasureSpec.getMode(heightMeasureSpec)
+            val available = MeasureSpec.getSize(heightMeasureSpec)
+            val screenCap = (resources.displayMetrics.heightPixels * 0.45f).toInt()
+            var height = dp(prefs.keyboardHeightDp.toFloat())
+            height = minOf(height, screenCap)
+            if (mode != MeasureSpec.UNSPECIFIED && available > 0) {
+                height = minOf(height, available)
+            }
             super.onMeasure(
                 widthMeasureSpec,
                 MeasureSpec.makeMeasureSpec(height, MeasureSpec.EXACTLY)
@@ -170,8 +201,8 @@ class ChineseKeyboardService : InputMethodService(),
         r.requestLayout()
         candidateBar?.visibility = if (prefs.candidateBarVisible) View.VISIBLE else View.GONE
         val barParams = candidateBar?.layoutParams
-        if (barParams != null && barParams.height != dp(40f)) {
-            barParams.height = dp(40f)
+        if (barParams != null && barParams.height != dp(CANDIDATE_BAR_DP)) {
+            barParams.height = dp(CANDIDATE_BAR_DP)
             candidateBar?.layoutParams = barParams
         }
         keyboardView?.requestLayout()

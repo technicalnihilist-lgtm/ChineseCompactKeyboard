@@ -63,7 +63,7 @@ class ScreenshotTest {
         val context = ApplicationProvider.getApplicationContext<Context>()
         val prefs = Prefs.get(context)
         prefs.theme = if (dark) Prefs.THEME_DARK else Prefs.THEME_LIGHT
-        prefs.keyboardHeightDp = 250
+        prefs.keyboardHeightDp = Prefs.DEFAULT_HEIGHT_DP
         prefs.chineseMode = true
 
         val service = Robolectric.buildService(ChineseKeyboardService::class.java).create().get()

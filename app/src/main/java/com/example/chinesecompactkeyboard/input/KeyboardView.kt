@@ -130,9 +130,9 @@ class KeyboardView(context: Context) : View(context) {
         placed.clear()
         if (width == 0 || height == 0) return
         val rows = currentRows()
-        val gap = dp(2.6f)
+        val gap = dp(2.0f)
         val horizontalPadding = dp(2f)
-        val verticalPadding = dp(2.5f)
+        val verticalPadding = dp(2.0f)
         val usableWidth = width - horizontalPadding * 2
         val usableHeight = height - verticalPadding * 2
         val unit = usableWidth / 10f
@@ -162,8 +162,8 @@ class KeyboardView(context: Context) : View(context) {
     override fun onDraw(canvas: Canvas) {
         val now = SystemClock.uptimeMillis()
         var needsAnimation = false
-        val radius = dp(6.5f) * (0.9f + 0.1f * keyScale)
-        textPaint.textSize = dp(19f) * keyScale
+        val radius = dp(5.5f) * (0.9f + 0.1f * keyScale)
+        textPaint.textSize = dp(17.5f) * keyScale
         textPaint.typeface = Typeface.create("sans-serif", Typeface.NORMAL)
 
         for (index in placed.indices) {
@@ -210,9 +210,9 @@ class KeyboardView(context: Context) : View(context) {
             }
             val label = key.spec.label
             val size = when (key.spec.kind) {
-                KeyKind.CHAR -> dp(19f) * keyScale
-                KeyKind.SPACE -> dp(13f) * keyScale
-                else -> dp(13.5f) * keyScale
+                KeyKind.CHAR -> dp(17.5f) * keyScale
+                KeyKind.SPACE -> dp(11.5f) * keyScale
+                else -> dp(12f) * keyScale
             }
             textPaint.textSize = size
             val metrics = textPaint.fontMetrics

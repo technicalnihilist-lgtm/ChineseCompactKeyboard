@@ -80,9 +80,9 @@ class Prefs private constructor(context: Context) {
         const val THEME_LIGHT = "light"
         const val THEME_DARK = "dark"
 
-        const val MIN_HEIGHT_DP = 170
-        const val MAX_HEIGHT_DP = 340
-        const val DEFAULT_HEIGHT_DP = 232
+        const val MIN_HEIGHT_DP = 150
+        const val MAX_HEIGHT_DP = 300
+        const val DEFAULT_HEIGHT_DP = 196
         const val MIN_SCALE = 85
         const val MAX_SCALE = 125
         const val CLIPBOARD_LIMIT = 100

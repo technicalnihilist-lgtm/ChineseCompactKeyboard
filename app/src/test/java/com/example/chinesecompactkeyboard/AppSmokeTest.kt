@@ -60,8 +60,9 @@ class AppSmokeTest {
             View.MeasureSpec.makeMeasureSpec(1080, View.MeasureSpec.EXACTLY),
             View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)
         )
-        val expected = (240 * context.resources.displayMetrics.density).toInt()
-        assertEquals(expected, view.measuredHeight)
+        val wanted = (240 * context.resources.displayMetrics.density).toInt()
+        val cap = (context.resources.displayMetrics.heightPixels * 0.45f).toInt()
+        assertEquals(minOf(wanted, cap), view.measuredHeight)
     }
 
 }

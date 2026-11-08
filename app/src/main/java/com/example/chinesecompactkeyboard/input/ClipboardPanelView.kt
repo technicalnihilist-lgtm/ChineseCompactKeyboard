@@ -38,7 +38,7 @@ class ClipboardPanelView(context: Context) : LinearLayout(context) {
         orientation = VERTICAL
         header.orientation = HORIZONTAL
         header.gravity = Gravity.CENTER_VERTICAL
-        addView(header, LayoutParams(LayoutParams.MATCH_PARENT, dp(40f).toInt()))
+        addView(header, LayoutParams(LayoutParams.MATCH_PARENT, dp(36f).toInt()))
         scroll.isVerticalScrollBarEnabled = true
         listContainer.orientation = VERTICAL
         scroll.addView(listContainer, LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT))

@@ -175,8 +175,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:stepSize="2"
-                        android:valueFrom="170"
-                        android:valueTo="340" />
+                        android:valueFrom="150"
+                        android:valueTo="300" />
 
                     <TextView
                         android:id="@+id/key_size_label"
