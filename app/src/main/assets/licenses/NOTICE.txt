@@ -1,0 +1,23 @@
+Chinese Keyboard — third-party data notices
+===========================================
+
+The offline dictionary in this app is compiled from the following projects.
+Only derived data files are bundled; no code from these projects is used at
+runtime.
+
+1. Rime luna-pinyin (https://github.com/rime/rime-luna-pinyin)
+   Word/reading data. Apache License 2.0. Contains data derived from
+   CC-CEDICT (CC BY-SA 3.0), Chewing, Android PinyinIME and OpenCC.
+
+2. Rime essay (https://github.com/rime/rime-essay)
+   Word frequency list used for candidate ranking. Apache License 2.0.
+
+3. mozillazg/phrase-pinyin-data (https://github.com/mozillazg/phrase-pinyin-data)
+   Phrase -> pinyin readings. MIT License, Copyright (c) 2017 mozillazg.
+
+4. OpenCC (https://github.com/BYVoid/OpenCC)
+   Simplified <-> Traditional character and phrase tables.
+   Apache License 2.0.
+
+All processing happens on the device. The app requests no permissions and
+makes no network requests.

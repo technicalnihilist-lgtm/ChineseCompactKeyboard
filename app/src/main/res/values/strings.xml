@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Chinese Keyboard</string>
+    <string name="settings_title">Chinese Keyboard</string>
+    <string name="clipboard_history">Clipboard history</string>
+    <string name="test_typing">Test typing</string>
+
+    <string name="section_setup">Setup</string>
+    <string name="section_appearance">Appearance</string>
+    <string name="section_size">Keyboard size</string>
+    <string name="section_feedback">Sound and vibration</string>
+    <string name="section_input">Input</string>
+    <string name="section_clipboard">Clipboard</string>
+    <string name="section_about">About</string>
+
+    <string name="btn_enable_keyboard">Enable keyboard</string>
+    <string name="btn_choose_keyboard">Choose keyboard</string>
+    <string name="btn_test_typing">Test typing</string>
+
+    <string name="theme_system">System</string>
+    <string name="theme_light">White</string>
+    <string name="theme_dark">Dark</string>
+
+    <string name="keyboard_height">Keyboard height</string>
+    <string name="key_size">Key size</string>
+    <string name="sound">Key sound</string>
+    <string name="vibration">Vibration</string>
+    <string name="vibration_strength">Vibration strength</string>
+    <string name="pinyin_suggestions">Pinyin suggestions and context predictions</string>
+    <string name="candidate_bar">Show candidate bar</string>
+    <string name="traditional_default">Default to Traditional characters</string>
+    <string name="clipboard_capture">Save copied text to history</string>
+    <string name="manage_history">Manage clipboard history</string>
+    <string name="clear_all">Clear all</string>
+    <string name="reset_learning">Reset learned words</string>
+
+    <string name="subtype_pinyin">Chinese Pinyin</string>
+    <string name="ime_label">Chinese Keyboard</string>
+</resources>
